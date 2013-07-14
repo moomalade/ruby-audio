@@ -1,5 +1,5 @@
 require 'audio'
-require 'sndfile.so'
+require 'sndfile/sndfile.so'
 
 module Audio
   # libsndfile[http://www.mega-nerd.com/libsndfile/]

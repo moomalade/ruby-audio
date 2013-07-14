@@ -4,6 +4,8 @@ require 'mkmf'
 $CFLAGS = '-I/opt/local/include'
 $LDFLAGS = '-L/opt/local/lib -L/usr/local/lib'
 
+dir_config("sndfile")
+
 # Add narray header to path
 matches = Gem.source_index.find_name 'narray', Gem::Requirement.default
 if matches.empty?
@@ -26,6 +28,9 @@ unless have_header 'narray.h'
 end
 
 # Swig
-system 'swig -ruby -I/usr/include -I/usr/local/include -I/opt/local/include sndfile.i'
+xsystem "swig -ruby #{$CPPFLAGS} -I/usr/include -I/usr/local/include -I/opt/local/include sndfile.i"
+if not $?.success?
+  raise "swig command failed"
+end
 
 create_makefile 'sndfile'

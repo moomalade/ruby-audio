@@ -12,12 +12,12 @@ spec = Gem::Specification.new do |s|
   s.email    = 'perl.programmer@gmail.com'
   s.homepage = 'http://github.com/warhammerkid/ruby-audio'
 
-  s.platform     = Gem::Platform::RUBY
-  s.has_rdoc     = true
-  s.files        = FileList['README.rdoc', 'Rakefile', 'LICENSE', 'TODO', 'examples/**/*.rb', 'examples/**/*.wav', 'lib/**/*.rb', 'test/*.rb', 'test/*.wav', 'ext/sndfile/extconf.rb', 'ext/sndfile/sndfile.i']
-  s.require_path = 'lib'
-  s.extensions   = ["ext/sndfile/extconf.rb"]
-  s.test_files   = Dir[*['test/*.rb']]
+  s.platform      = Gem::Platform::RUBY
+  s.has_rdoc      = true
+  s.files         = Dir['README.rdoc', 'Rakefile', 'LICENSE', 'TODO', 'examples/**/*.rb', 'examples/**/*.wav', 'lib/**/*.rb', 'test/*.rb', 'test/*.wav', 'ext/sndfile/extconf.rb', 'ext/sndfile/sndfile.i']
+  s.require_paths = ['lib','ext']
+  s.extensions    = ["ext/sndfile/extconf.rb"]
+  s.test_files    = Dir[*['test/*.rb']]
 
   s.add_dependency('narray')
   s.requirements << 'libsndfile (http://www.mega-nerd.com/libsndfile/)'
